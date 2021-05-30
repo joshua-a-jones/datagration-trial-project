@@ -12,7 +12,7 @@ from production_functions import exponential_equation, hyperbolic_equation, harm
 
 
 # create time vector for calculations. 40 years X 12 months + 1 month
-t = np.float32(range(0,40*12+1))
+t = np.float64(range(0,40*12+1))
 
 ## define initial conditions for exponential curve
 # units for Qi are converted to Mcf per month
@@ -28,18 +28,18 @@ pmv_exponential = periodic_monthly_volume(exponential_equation(t, Qi_exponential
 Qi_hyperbolic = 15000*365/12
 Di_hyperbolic = 1.4/12
 B_hyperbolic = 1.5
-Dmin_hyperbolic = 0.06*12
+Dmin_hyperbolic = 0.06/12
 
-pmv_hyperbolic = periodic_monthly_volume(hyperbolic_equation(t, Qi_hyperbolic, B_hyperbolic, Di_hyperbolic))
+pmv_hyperbolic = periodic_monthly_volume(hyperbolic_equation(t, Qi_hyperbolic, B_hyperbolic, Di_hyperbolic, Dmin_hyperbolic))
 
 ## define initial conditions for harmonic curve
 # units for Qi are converted to Mcf per month
 # units for Di are converted to 1/month
 Qi_harmonic = 10000*365/12
 Di_harmonic = 1.2/12
-Dmin_harmonic = 0.10*12
+Dmin_harmonic = 0.10/12
 
-pmv_harmonic = periodic_monthly_volume(harmonic_equation(t, Qi_harmonic, Di_harmonic))
+pmv_harmonic = periodic_monthly_volume(harmonic_equation(t, Qi_harmonic, Di_harmonic, Dmin_harmonic))
 
 
 
@@ -51,12 +51,18 @@ plt.semilogy(t[0:-1],pmv_hyperbolic)
 plt.semilogy(t[0:-1],pmv_harmonic)
 
 # make the plots pretty with axis labels and a legend
-plt.xlim(xmin=0)
-plt.ylim(ymin = 1E-9) #below this value start getting rounding errors
-plt.title('Periodic Monthly Volumes')
-plt.ylabel('Periodic Monthly Volume (MCF)')
+plt.xlim(xmin=0, xmax = 480)
+plt.ylim(ymin = 1)
+plt.title('Periodic Monthly Volumes Comparison')
+plt.ylabel('Periodic Monthly Volume (Mcf)')
 plt.xlabel('Months Since Start')
 plt.legend(['Exponential','Hyperbolic','Harmonic'])
+plt.grid(True, which = 'both')
+
+
+
+
+
 
 
 
