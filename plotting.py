@@ -44,14 +44,15 @@ pmv_harmonic = periodic_monthly_volume(harmonic_equation(t, Qi_harmonic, Di_harm
 
 
 # Create plots
-plt.plot(t[0:-1],pmv_exponential)
+plt.semilogy(t[0:-1],pmv_exponential)
 
-plt.plot(t[0:-1],pmv_hyperbolic)
+plt.semilogy(t[0:-1],pmv_hyperbolic)
 
-plt.plot(t[0:-1],pmv_harmonic)
+plt.semilogy(t[0:-1],pmv_harmonic)
 
 # make the plots pretty with axis labels and a legend
 plt.xlim(xmin=0)
+plt.ylim(ymin = 1E-9) #below this value start getting rounding errors
 plt.title('Periodic Monthly Volumes')
 plt.ylabel('Periodic Monthly Volume (MCF)')
 plt.xlabel('Months Since Start')
