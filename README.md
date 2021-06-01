@@ -1,5 +1,5 @@
 # periodic-monthly-volume-plotting
-A simple program to calculate periodic monthly volume using Arps decline curves and displays a graph of 40-year projections of monthly gas volumes, in Mcf, vs. time for the following three cases:
+A simple program that uses Arps decline curves and displays a graph of 40-year projections of monthly gas volumes, in Mcf, vs. time for the following three cases:
 
 #### Exponential:
 * Qi= 5,000 Mcfd
