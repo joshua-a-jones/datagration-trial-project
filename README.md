@@ -1,15 +1,17 @@
 # periodic-monthly-volume-plotting
 A simple program to calculate periodic monthly volume using Arps decline curves and displays a graph of 40-year projections of monthly gas volumes, in Mcf, vs. time for the following three cases:
 
-Exponential:
+#### Exponential:
 * Qi= 5,000 Mcfd
 * Di (nominal)= 2.0/year
-Hyperbolic:
+
+#### Hyperbolic:
 * Qi= 15,000 Mcfd
 * Di (nominal)= 1.4/year
 * B exponent= 1.5
 * Dmin (nominal)= 0.06/year
-Harmonic:
+
+#### Harmonic:
 * Qi= 10,000 Mcfd
 * Di (nominal)= 1.2/year
 * Dmin (nominal)= 0.10/year
