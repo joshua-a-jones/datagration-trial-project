@@ -43,11 +43,9 @@ pmv_harmonic = periodic_monthly_volume(harmonic_equation(t, Qi_harmonic, Di_harm
 
 
 
-# Create plots
+# Create plots. t runs from 0 to 481. We only have 480 months to plot, so drop last value of t
 plt.semilogy(t[0:-1],pmv_exponential)
-
 plt.semilogy(t[0:-1],pmv_hyperbolic)
-
 plt.semilogy(t[0:-1],pmv_harmonic)
 
 # make the plots pretty with axis labels and a legend
