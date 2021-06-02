@@ -11,7 +11,8 @@ import matplotlib.pyplot as plt
 from production_functions import exponential_equation, hyperbolic_equation, harmonic_equation, periodic_monthly_volume
 
 
-# create time vector for calculations. 40 years X 12 months + 1 month
+# create time vector for calculations. 40 years X 12 months + 1 month. 
+# The +1 is because we have 480 months, but we run from start of first month to end of final month
 t = np.float64(range(0,40*12+1))
 
 ## define initial conditions for exponential curve
