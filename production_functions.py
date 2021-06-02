@@ -60,9 +60,11 @@ def hyperbolic_equation(t, qi, b, di, dmin):
         # if d > dmin, use hyperbolic function
         if d > dmin:
             q = qi/((1.0 + b*di*t[i])**(1.0/b))
+            Q[i] = ((qi**b)/(di*(1.0-b)))*(qi**(1.0-b)-q**(1.0-b))
+            
+            #update the tracking variables
             hyperbolic_q_min = q
             hyperbolic_stop_time = t[i]
-            Q[i] = ((qi**b)/(di*(1.0-b)))*(qi**(1.0-b)-q**(1.0-b))
             hyperbolic_stop_Q = Q[i]
 
         # when d < dmin, switch to exponential 
@@ -104,10 +106,13 @@ def harmonic_equation(t, qi, di, dmin):
         #if d > dmin, use harmonic function
         if d > dmin:
             q = qi/(1.0 + di*t[i])
+            Q[i] = (qi/di)*(np.log(qi/q))
+            
+            # update the tracking variables
             harmonic_q_min = q
             harmonic_stop_time = t[i]
-            Q[i] = (qi/di)*(np.log(qi/q))
             harmonic_stop_Q = Q[i]
+            
         # when d < dmin, switch to exponential function
         else:
             q = harmonic_q_min*np.exp(-dmin*(t[i]-harmonic_stop_time))
@@ -139,7 +144,7 @@ def periodic_monthly_volume(cumulative_array):
     
     # loop through cumulative array and calculate the monthly production as
     # the cumulative value at the end of the month minus the cumulative value 
-    # at the beggining of the month
+    # at the beggining of the month (integral of f(x) from a to b = F(b) - F(a))
     for i in range(0, len(cumulative_array)-1):
         periodic_monthly_volume_array[i] = cumulative_array[i+1]-cumulative_array[i]
         
