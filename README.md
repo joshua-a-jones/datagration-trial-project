@@ -19,4 +19,4 @@ A simple program that uses Arps decline curves and displays a graph of 40-year p
 See here for information on calculations and parameters: https://www.extractiveshub.org/servefile/getFile/id/4377
 
 # Running the program
-To run the program, simply clone this repo and then run the `plotting.py` script (must have python installed, as well as the matplotlib library)
+To run the program, simply clone this repo and then run the `plotting.py` script (must have python installed, as well as the matplotlib library and the numpy library)
